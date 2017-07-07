@@ -19,7 +19,7 @@ Shader "Custom/RenderDepth"
 
 		uniform sampler2D _MainTex;
 	uniform sampler2D _CameraDepthTexture;
-	//uniform sampler2D _LastCameraDepthTexture;
+	uniform sampler2D _LastCameraDepthTexture;
 	uniform fixed _DepthLevel;
 	uniform half4 _MainTex_TexelSize;
 
@@ -52,8 +52,8 @@ Shader "Custom/RenderDepth"
 
 	fixed4 frag(output o) : COLOR
 	{
-		float depth = UNITY_SAMPLE_DEPTH(tex2D(_CameraDepthTexture, o.uv));
-		//float depth = UNITY_SAMPLE_DEPTH(tex2D(_LastCameraDepthTexture, o.uv));
+		//float depth = UNITY_SAMPLE_DEPTH(tex2D(_CameraDepthTexture, o.uv));
+		float depth = UNITY_SAMPLE_DEPTH(tex2D(_LastCameraDepthTexture, o.uv));
 	depth = Linear01Depth(depth);
 	return depth;
 	}

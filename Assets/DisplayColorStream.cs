@@ -28,7 +28,7 @@ public class DisplayColorStream : MonoBehaviour {
         // Actually apply all previous SetPixel and SetPixels changes.
         t.Apply();    // Unnecessary? YES Necessary!!!
 
-        display.GetComponent<MeshRenderer>().sharedMaterial.mainTexture = t;
+        display.GetComponent<MeshRenderer>().material.mainTexture = t;
 
         RenderTexture.active = null;
     }
