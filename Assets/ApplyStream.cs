@@ -54,9 +54,9 @@ public class ApplyStream : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        Matrix4x4 m = cam.projectionMatrix * cam.worldToCameraMatrix;
         material.SetFloat("_DepthLevel", depthLevel);
-
+        material.SetMatrix("_WorldToClip", m);
         RenderTexture.active = tex;
         //cam.Render();
         Graphics.Blit(tex, tex, material);

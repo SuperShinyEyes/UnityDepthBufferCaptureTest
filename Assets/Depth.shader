@@ -1,11 +1,19 @@
-﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
 Shader "Custom/RenderDepth"
 {
 	Properties
 	{
 		MainTex("Base (RGB)", 2D) = "white" {}
-	_DepthLevel("Depth Level", Range(1, 3)) = 1
+		_DepthLevel("Depth Level", Range(1, 3)) = 1
 	}
 		SubShader
 	{
@@ -22,7 +30,8 @@ Shader "Custom/RenderDepth"
 	uniform sampler2D _LastCameraDepthTexture;
 	uniform fixed _DepthLevel;
 	uniform half4 _MainTex_TexelSize;
-
+	uniform float4x4 _WorldToClip;
+		
 	struct input
 	{
 		float4 pos : POSITION;
@@ -39,7 +48,8 @@ Shader "Custom/RenderDepth"
 	output vert(input i)
 	{
 		output o;
-		o.pos = UnityObjectToClipPos(i.pos);
+		//o.pos = UnityObjectToClipPos(i.pos);
+		o.pos = mul(_WorldToClip * unity_ObjectToWorld, i.pos);
 		o.uv = MultiplyUV(UNITY_MATRIX_TEXTURE0, i.uv);
 		// why do we need this? cause sometimes the image I get is flipped. see: http://docs.unity3d.com/Manual/SL-PlatformDifferences.html
 #if UNITY_UV_STARTS_AT_TOP
