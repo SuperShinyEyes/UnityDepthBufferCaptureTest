@@ -1,0 +1,4 @@
+C:\Users\YOUNG\CODE\DepthBufferTest\Apps\DepthBufferTest\DepthBufferTest.csproj;x86
+C:\Users\YOUNG\CODE\DepthBufferTest\Apps\GeneratedProjects\UWP\Assembly-CSharp\Assembly-CSharp.csproj;x86
+C:\Users\YOUNG\CODE\DepthBufferTest\Apps\GeneratedProjects\UWP\Assembly-CSharp-firstpass\Assembly-CSharp-firstpass.csproj;x86
+C:\Users\YOUNG\CODE\DepthBufferTest\Apps\GeneratedProjects\UWP\Assembly-CSharp-firstpass\Assembly-CSharp-firstpass.csproj;x86

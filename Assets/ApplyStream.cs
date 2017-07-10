@@ -28,12 +28,18 @@ public class ApplyStream : MonoBehaviour {
         }
     }
 
-
+    private RenderBuffer colorBuffer;
+    private RenderBuffer depthBuffer;
 
     void Start () {
         cam = GetComponent<Camera>();
-        cam.targetTexture = tex;
         
+        //cam.SetTargetBuffers(colorBuffer, tex.depthBuffer);
+        cam.SetTargetBuffers(tex.colorBuffer, tex.depthBuffer);
+
+        //display.transform.localScale = new Vector3(cam.pixelWidth/ 10, cam.pixelHeight/10, 1);
+
+
 
         if (!SystemInfo.supportsImageEffects)
         {
@@ -58,7 +64,7 @@ public class ApplyStream : MonoBehaviour {
         material.SetFloat("_DepthLevel", depthLevel);
 
         RenderTexture.active = tex;
-        //cam.Render();
+        cam.Render();
         Graphics.Blit(tex, tex, material);
 
         Texture2D t = new Texture2D(tex.width, tex.height, TextureFormat.ARGB32, false);
